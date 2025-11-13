@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Bible Verse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="verse-container">
+    <div id="verse" class="verse active">Loading verse...</div>
+  </div>
+  <button id="newVerseBtn">Show Another Verse</button>
+
+  <script>
+    let verses = [];
+    const gradients = [
+      "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+      "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+      "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)",
+      "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
+      "linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)"
+    ];
+
+    async function loadVerses() {
+      const response = await fetch("verses.json");
+      verses = await response.json();
+      showVerse(getRandomVerse());
+    }
+
+    function getRandomVerse() {
+      const v = verses[Math.floor(Math.random() * verses.length)];
+      return `<p>${v.text}</p><small>— ${v.reference}</small>`;
+    }
+
+    function showVerse(html) {
+      const container = document.getElementById("verse-container");
+      const oldVerse = document.querySelector(".verse.active");
+
+      // Change background for each verse
+      document.body.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+
+      const newVerse = document.createElement("div");
+      newVerse.className = "verse slide-in";
+      newVerse.innerHTML = html;
+      container.appendChild(newVerse);
+
+      if (oldVerse) {
+        oldVerse.classList.remove("active");
+        oldVerse.classList.add("slide-out");
+        setTimeout(() => oldVerse.remove(), 600);
+      }
+
+      setTimeout(() => {
+        newVerse.classList.remove("slide-in");
+        newVerse.classList.add("active");
+      }, 10);
+    }
+
+    document.getElementById("newVerseBtn").addEventListener("click", () => {
+      showVerse(getRandomVerse());
+    });
+
+    loadVerses();
+  </script>
+</body>
+
+</html>
