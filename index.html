@@ -55,19 +55,21 @@
       }
     }
 
-    #logo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 50px;
-      opacity: 0.85;
-    }
 
-    #bottomIcon {
-      position: absolute;
-      bottom: 60px;
-      right: 10px;
-      width: 250px;
+    #topLogo {
+      position: fixed;
+      /* stays in place on all screens */
+      top: 20px;
+      /* distance from the top */
+      left: 50%;
+      /* move to middle horizontally */
+      transform: translateX(-50%);
+      /* PERFECT centering */
+      width: 60px;
+      /* adjust size */
+      opacity: 0.85;
+      z-index: 2000;
+      /* ensure it's above everything */
     }
 
     #verseBox {
@@ -127,8 +129,8 @@
   <!--img id="logo" src="top_logo.png" alt="Top Logo"-->
 
   <!-- Placeholder bottom-right icon -->
-  <img id="bottomIcon" src="./verified.png" alt="Bottom Icon">
-  
+  <img id="topLogo" src="./verified.png" alt="Bottom Icon">
+
   <!-- Verse text -->
   <div id="verseBox"></div>
   <div id="referenceBox"></div>
