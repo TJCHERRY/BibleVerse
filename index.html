@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Verse Display</title>
@@ -16,8 +15,7 @@
 
       /* Background image + fallback color */
       background-image:
-        linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.897)),
-        url('./YA_bg.png');
+        linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -36,7 +34,38 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      z-index: -100;
     }
+
+    .background-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      /* bottom-most layer */
+      background-image: url("./YA_bg.png");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      /* fade the image so verse stands out */
+      filter: brightness(0.4);
+      animation: bgZoom 12s ease-in-out infinite;
+    }
+
+    /* Soft zoom animation */
+    @keyframes bgZoom {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
 
 
 
@@ -118,6 +147,30 @@
       transition: opacity 0.8s ease;
       font-weight: 300;
     }
+
+    .downloadVerse-button {
+      position: fixed;
+      bottom: 20px;
+      /* padding from bottom */
+      left: 50%;
+      transform: translateX(-50%);
+      /* centers perfectly */
+
+      padding: 12px 24px;
+      background: #4a8cff;
+      /* your blue vibe */
+      color: white;
+      font-family: 'Spline Sans', sans-serif;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0.95;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
   </style>
 </head>
 
@@ -127,13 +180,14 @@
 
   <!-- Placeholder top-left logo -->
   <!--img id="logo" src="top_logo.png" alt="Top Logo"-->
-
+  <div class="background-layer"></div>
   <!-- Placeholder bottom-right icon -->
   <img id="topLogo" src="./verified.png" alt="Bottom Icon">
 
   <!-- Verse text -->
   <div id="verseBox"></div>
   <div id="referenceBox"></div>
+  <button id= "download" class="downloadVerse-button" type="button"> Download Verse </button>
 
   <script>
     async function loadVerse() {
@@ -184,7 +238,17 @@
       type();
     }
 
+    document.getElementById("download").onclick = function() {downloadCanvas()};
+
+     function downloadCanvas() {
+      var link = document.createElement('a');
+      link.download = 'YAVerse.png';
+      link.href = document.getElementById('myCanvas').toDataURL()
+      link.click();
+    }
+
     loadVerse();
+
   </script>
 
 
