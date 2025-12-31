@@ -42,7 +42,7 @@
       inset: 0;
       z-index: -10;
       /* bottom-most layer */
-      background-image: url("./YA_bg.jfif");
+      background-image: url("./YA_bg.jpg");
       background-size: cover;
       background-position: center;
       /* fade the image so verse stands out */
@@ -93,7 +93,7 @@
       /* move to middle horizontally */
       transform: translateX(-50%);
       /* PERFECT centering */
-      width: 100px;
+      width: 170px;
       /* adjust size */
       opacity: 0.85;
       z-index: 2000;
@@ -101,6 +101,8 @@
     }
 
     #verseBox {
+      
+      margin-top: 100px;
       max-width: 80%;
       max-height: 100vh;
       text-align: center;
@@ -186,7 +188,7 @@
   <!-- Verse text -->
   <div id="verseBox"></div>
   <div id="referenceBox"></div>
-  <button id= "download" class="downloadVerse-button" type="button"> Take Screenshot </button>
+  <!-- <button id= "download" class="downloadVerse-button" type="button"> Take Screenshot </button> -->
 
   <script>
     async function loadVerse() {
@@ -237,14 +239,14 @@
       type();
     }
 
-    document.getElementById("download").onclick = function() {downloadCanvas()};
+    // document.getElementById("download").onclick = function() {downloadCanvas()};
 
-     function downloadCanvas() {
-      var link = document.createElement('a');
-      link.download = 'YAVerse.png';
-      link.href = document.getElementById('myCanvas').toDataURL()
-      link.click();
-    }
+    //  function downloadCanvas() {
+    //   var link = document.createElement('a');
+    //   link.download = 'YAVerse.png';
+    //   link.href = document.getElementById('myCanvas').toDataURL()
+    //   link.click();
+    // }
 
     loadVerse();
 
