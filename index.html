@@ -46,7 +46,7 @@
       background-size: cover;
       background-position: center;
       /* fade the image so verse stands out */
-      filter: brightness(0.25);
+      filter: brightness(0.7);
       animation: bgZoom 12s ease-in-out infinite;
     }
 
@@ -85,15 +85,11 @@
 
 
     #topLogo {
-      position: fixed;
+      position: relative;
       /* stays in place on all screens */
-      top: 20%;
-      /* distance from the top */
-      left: 50%;
-      /* move to middle horizontally */
-      transform: translateX(-50%);
+      top: -10%;
       /* PERFECT centering */
-      width: 170px;
+      width: 200px;
       /* adjust size */
       opacity: 0.85;
       z-index: 2000;
@@ -102,7 +98,7 @@
 
     #verseBox {
       position:relative;
-      bottom: -5%;
+      bottom: -10%;
       max-width: 80%;
       max-height: 100vh;
       text-align: center;
@@ -139,7 +135,7 @@
 
     #referenceBox {
       position:relative;
-      bottom: -8%;
+      bottom: -12%;
       text-align: center;
       font-size: clamp(0.9rem, 2vw, 1.2rem);
       color: #ffffff;
