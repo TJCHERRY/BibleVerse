@@ -87,7 +87,7 @@
     #topLogo {
       position: fixed;
       /* stays in place on all screens */
-      top: 20px;
+      top: 20%;
       /* distance from the top */
       left: 50%;
       /* move to middle horizontally */
@@ -101,8 +101,8 @@
     }
 
     #verseBox {
-      
-      margin-top: 100px;
+      position:relative;
+      bottom: -14%;
       max-width: 80%;
       max-height: 100vh;
       text-align: center;
@@ -138,7 +138,8 @@
     }
 
     #referenceBox {
-      margin-top: 20px;
+      position:relative;
+      bottom: -16%;
       text-align: center;
       font-size: clamp(0.9rem, 2vw, 1.2rem);
       color: #ffffff;
@@ -150,24 +151,22 @@
     }
 
     .downloadVerse-button {
+      text-align: center;
       position: fixed;
-      bottom: 20px;
+      bottom: 10px;
       /* padding from bottom */
       left: 50%;
       transform: translateX(-50%);
       /* centers perfectly */
 
       padding: 12px 24px;
-      background: #4a8cff;
+      background: #222222;
       /* your blue vibe */
       color: white;
       font-family: 'Spline Sans', sans-serif;
       font-weight: 600;
-      border: none;
       border-radius: 10px;
-      font-size: 1.1rem;
-
-      cursor: pointer;
+      font-size: 0.8rem;
       z-index: 9999;
       opacity: 0.95;
       transition: transform 0.2s ease, opacity 0.2s ease;
@@ -188,7 +187,7 @@
   <!-- Verse text -->
   <div id="verseBox"></div>
   <div id="referenceBox"></div>
-  <!-- <button id= "download" class="downloadVerse-button" type="button"> Take Screenshot </button> -->
+  <div id= "download" class="downloadVerse-button"> Take Screenshot </div>
 
   <script>
     async function loadVerse() {
